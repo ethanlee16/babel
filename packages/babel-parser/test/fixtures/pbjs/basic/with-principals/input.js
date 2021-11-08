@@ -1,0 +1,1 @@
+protocol ProtocolTest [Signer, Verifier] {}

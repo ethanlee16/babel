@@ -104,6 +104,7 @@ export const ErrorMessages = makeErrorTemplates(
     MissingClassName: "A class name is required.",
     MissingEqInAssignment:
       "Only '=' operator can be used for specifying default value.",
+    MissingProtocolName: "A protocol name is required.",
     MissingSemicolon: "Missing semicolon.",
     MissingUnicodeEscape: "Expecting Unicode escape sequence \\uXXXX.",
     MixingCoalesceWithLogical:

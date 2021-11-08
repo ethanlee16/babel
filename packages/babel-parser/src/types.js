@@ -358,6 +358,33 @@ export type FunctionDeclaration = OptFunctionDeclaration & {
   id: Identifier,
 };
 
+export type Protocol = ProtocolDeclaration;
+
+export type ProtocolDeclaration = DeclarationBase & {
+  type: "ProtocolDeclaration",
+  id: Identifier,
+  principals: Array<ProtocolPrincipalDeclaration>,
+  body: ProtocolBody,
+};
+
+export type ProtocolPrincipalDeclaration = {
+  type: "ProtocolPrincipalDeclaration",
+  id: Identifier,
+  inputs: Array<Identifier>,
+};
+
+export type ProtocolBody = NodeBase & {
+  type: "ProtocolBody",
+  steps: Array<ProtocolStepDeclaration>,
+};
+
+export type ProtocolStepDeclaration = DeclarationBase & {
+  type: "ProtocolStepDeclaration",
+  id: Identifier,
+  parties: $ReadOnlyArray<Identifier>,
+  body: Statement,
+};
+
 export type VariableDeclaration = DeclarationBase &
   HasDecorators & {
     type: "VariableDeclaration",

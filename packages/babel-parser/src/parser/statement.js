@@ -283,6 +283,10 @@ export default class StatementParser extends ExpressionParser {
         if (context) this.unexpected();
         return this.parseClass(node, true);
 
+      case tt._protocol:
+        if (context) this.unexpected();
+        return this.parseProtocol(node);
+
       case tt._if:
         return this.parseIfStatement(node);
       case tt._return:
@@ -1783,6 +1787,98 @@ export default class StatementParser extends ExpressionParser {
   // https://tc39.es/ecma262/#prod-ClassHeritage
   parseClassSuper(node: N.Class): void {
     node.superClass = this.eat(tt._extends) ? this.parseExprSubscripts() : null;
+  }
+
+  parseProtocol<T: N.Protocol>(node: T): T {
+    this.next();
+    this.parseProtocolId(node);
+    node.principals = [];
+    this.parseProtocolPrincipals(node);
+    this.parseProtocolBody(node);
+
+    return this.finishNode(node, "ProtocolDeclaration");
+  }
+
+  parseProtocolId(node: N.Protocol): void {
+    if (tokenIsIdentifier(this.state.type)) {
+      node.id = this.parseIdentifier();
+    } else {
+      this.unexpected(null, Errors.MissingProtocolName);
+    }
+  }
+
+  parseProtocolPrincipals(node: N.Protocol): void {
+    this.expect(tt.bracketL);
+    let first = true;
+    while (!this.eat(tt.bracketR)) {
+      if (first) {
+        first = false;
+      } else {
+        if (this.eat(tt.bracketR)) break;
+        this.expect(tt.comma);
+      }
+      const principal = this.startNode();
+      principal.inputs = [];
+      node.principals.push(this.parseProtocolPrincipal(principal));
+    }
+  }
+
+  parseProtocolPrincipal(node: N.Node): N.ProtocolPrincipalDeclaration {
+    if (tokenIsIdentifier(this.state.type)) {
+      node.id = this.parseIdentifier();
+      if (this.eat(tt.parenL)) {
+        while (!this.eat(tt.parenR)) {
+          node.inputs.push(this.parseIdentifier());
+        }
+      }
+    } else {
+      this.unexpected(null, Errors.MissingProtocolName);
+    }
+    return this.finishNode(node, "ProtocolPrincipalDeclaration");
+  }
+
+  parseProtocolBody(node: N.Protocol): void {
+    node.body = this.startNode();
+    node.body.steps = [];
+    this.expect(tt.braceL);
+    while (!this.eat(tt.braceR)) {
+      console.log("parsing protocol step");
+      this.expect(tt._protocolStep);
+      node.body.steps.push(this.parseProtocolStep());
+    }
+  }
+
+  parseProtocolStep(): N.ProtocolStepDeclaration {
+    const node = this.startNode();
+    node.parties = [];
+    if (tokenIsIdentifier(this.state.type)) {
+      node.id = this.parseIdentifier();
+      // Check for parties
+      if (this.eat(tt.bracketL)) {
+        let first = true;
+        while (!this.eat(tt.bracketR)) {
+          if (first) {
+            first = false;
+          } else {
+            if (this.eat(tt.bracketR)) break;
+            this.expect(tt.thinArrow);
+          }
+          const party = this.startNode();
+          party.id = this.parseIdentifier();
+          node.parties.push(party);
+        }
+      }
+      this.parseProtocolStepBody(node);
+    } else {
+      this.unexpected(null, Errors.MissingProtocolName);
+    }
+    return this.finishNode(node, "ProtocolStepDeclaration");
+  }
+
+  parseProtocolStepBody(node: N.ProtocolStepDeclaration): void {
+    node.body = this.withSmartMixTopicForbiddingContext(() =>
+      this.parseStatement("step"),
+    );
   }
 
   // Parses module export declaration.

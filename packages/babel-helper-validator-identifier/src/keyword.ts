@@ -35,6 +35,7 @@ const reservedWords = {
     "typeof",
     "void",
     "delete",
+    "protocol",
   ],
   strict: [
     "implements",

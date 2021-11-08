@@ -1150,6 +1150,10 @@ export default class ExpressionParser extends LValParser {
       case tt._function:
         return this.parseFunctionOrFunctionSent();
 
+      case tt._protocol:
+        node = this.startNode();
+        return this.parseProtocol(node);
+
       case tt.at:
         this.parseDecorators();
       // fall through

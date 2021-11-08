@@ -147,6 +147,7 @@ export const tt: { [name: string]: TokenType } = {
   parenL: createToken("(", { beforeExpr, startsExpr }),
   parenR: createToken(")"),
   comma: createToken(",", { beforeExpr }),
+  thinArrow: createToken("->", { beforeExpr, binop: 9, prefix, startsExpr }),
   semi: createToken(";", { beforeExpr }),
   colon: createToken(":", { beforeExpr }),
   doubleColon: createToken("::", { beforeExpr }),
@@ -304,6 +305,9 @@ export const tt: { [name: string]: TokenType } = {
   // end: isTSDeclarationStart
   _opaque: createKeywordLike("opaque", { startsExpr }),
   // end: isFlowInterfaceOrTypeOrOpaque
+
+  _protocol: createKeyword("protocol", { startsExpr }),
+  _protocolStep: createKeyword("step", { startsExpr }),
   name: createToken("name", { startsExpr }),
   // end: isIdentifier
 
