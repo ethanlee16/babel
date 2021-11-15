@@ -102,6 +102,7 @@ export default class ExpressionParser extends LValParser {
     allowExpressionBody?: boolean,
     isAsync?: boolean,
   ) => T;
+  +parseProtocol: <T: N.Protocol>(node: T) => T;
   +parseFunctionParams: (node: N.Function, allowModifiers?: boolean) => void;
   +takeDecorators: (node: N.HasDecorators) => void;
   +parseBlockOrModuleBlockBody: (

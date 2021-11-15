@@ -1,0 +1,56 @@
+{
+  "type": "File",
+  "start":0,"end":43,"loc":{"start":{"line":1,"column":0},"end":{"line":1,"column":43}},
+  "program": {
+    "type": "Program",
+    "start":0,"end":43,"loc":{"start":{"line":1,"column":0},"end":{"line":1,"column":43}},
+    "sourceType": "script",
+    "interpreter": null,
+    "body": [
+      {
+        "type": "ProtocolDeclaration",
+        "start":0,"end":43,"loc":{"start":{"line":1,"column":0},"end":{"line":1,"column":43}},
+        "id": {
+          "type": "Identifier",
+          "start":9,"end":21,"loc":{"start":{"line":1,"column":9},"end":{"line":1,"column":21},"identifierName":"ProtocolTest"},
+          "name": "ProtocolTest"
+        },
+        "principals": [
+          {
+            "type": "ProtocolPrincipalDeclaration",
+            "start":23,"end":29,"loc":{"start":{"line":1,"column":23},"end":{"line":1,"column":29}},
+            "inputs": [],
+            "id": {
+              "type": "Identifier",
+              "start":23,"end":29,"loc":{"start":{"line":1,"column":23},"end":{"line":1,"column":29},"identifierName":"Signer"},
+              "name": "Signer"
+            }
+          },
+          {
+            "type": "ProtocolPrincipalDeclaration",
+            "start":31,"end":39,"loc":{"start":{"line":1,"column":31},"end":{"line":1,"column":39}},
+            "inputs": [],
+            "id": {
+              "type": "Identifier",
+              "start":31,"end":39,"loc":{"start":{"line":1,"column":31},"end":{"line":1,"column":39},"identifierName":"Verifier"},
+              "name": "Verifier"
+            }
+          }
+        ],
+        "body": {
+          "type": "",
+          "start": 41,
+          "end": 0,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 41
+            }
+          },
+          "steps": []
+        }
+      }
+    ],
+    "directives": []
+  }
+}

@@ -1112,6 +1112,12 @@ export function assertPipelinePrimaryTopicReference(
 ): asserts node is t.PipelinePrimaryTopicReference {
   assert("PipelinePrimaryTopicReference", node, opts);
 }
+export function assertProtocolDeclaration(
+  node: object | null | undefined,
+  opts?: object | null,
+): asserts node is t.ProtocolDeclaration {
+  assert("ProtocolDeclaration", node, opts);
+}
 export function assertTSParameterProperty(
   node: object | null | undefined,
   opts?: object | null,

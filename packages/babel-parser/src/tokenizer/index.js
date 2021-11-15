@@ -722,6 +722,8 @@ export default class Tokenizer extends ParserErrors {
 
     if (next === charCodes.equalsTo) {
       this.finishOp(tt.assign, 2);
+    } else if (next === charCodes.greaterThan) {
+      this.finishOp(tt.thinArrow, 2);
     } else {
       this.finishOp(tt.plusMin, 1);
     }

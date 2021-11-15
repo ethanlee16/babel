@@ -416,6 +416,9 @@ export interface NodePathAssetions {
   assertPrivateName(opts?: object): asserts this is NodePath<t.PrivateName>;
   assertProgram(opts?: object): asserts this is NodePath<t.Program>;
   assertProperty(opts?: object): asserts this is NodePath<t.Property>;
+  assertProtocolDeclaration(
+    opts?: object,
+  ): asserts this is NodePath<t.ProtocolDeclaration>;
   assertPureish(opts?: object): asserts this is NodePath<t.Pureish>;
   assertQualifiedTypeIdentifier(
     opts?: object,

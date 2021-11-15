@@ -261,6 +261,7 @@ export interface NodePathValidators {
   isPrivateName(opts?: object): this is NodePath<t.PrivateName>;
   isProgram(opts?: object): this is NodePath<t.Program>;
   isProperty(opts?: object): this is NodePath<t.Property>;
+  isProtocolDeclaration(opts?: object): this is NodePath<t.ProtocolDeclaration>;
   isPureish(opts?: object): this is NodePath<t.Pureish>;
   isQualifiedTypeIdentifier(
     opts?: object,

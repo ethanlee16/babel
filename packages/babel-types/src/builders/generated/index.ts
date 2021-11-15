@@ -1079,6 +1079,13 @@ export function pipelineBareFunction(
 export function pipelinePrimaryTopicReference(): t.PipelinePrimaryTopicReference {
   return builder.apply("PipelinePrimaryTopicReference", arguments);
 }
+export function protocolDeclaration(
+  id: any,
+  principals: any,
+  body: any,
+): t.ProtocolDeclaration {
+  return builder.apply("ProtocolDeclaration", arguments);
+}
 export function tsParameterProperty(
   parameter: t.Identifier | t.AssignmentPattern,
 ): t.TSParameterProperty {

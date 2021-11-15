@@ -160,3 +160,7 @@ defineType("PipelineBareFunction", {
 defineType("PipelinePrimaryTopicReference", {
   aliases: ["Expression"],
 });
+
+defineType("ProtocolDeclaration", {
+  visitor: ["id", "principals", "body"],
+});

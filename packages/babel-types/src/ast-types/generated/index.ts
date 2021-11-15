@@ -187,6 +187,7 @@ export type Node =
   | Placeholder
   | PrivateName
   | Program
+  | ProtocolDeclaration
   | QualifiedTypeIdentifier
   | RecordExpression
   | RegExpLiteral
@@ -1615,6 +1616,13 @@ export interface PipelineBareFunction extends BaseNode {
 
 export interface PipelinePrimaryTopicReference extends BaseNode {
   type: "PipelinePrimaryTopicReference";
+}
+
+export interface ProtocolDeclaration extends BaseNode {
+  type: "ProtocolDeclaration";
+  id: any;
+  principals: any;
+  body: any;
 }
 
 export interface TSParameterProperty extends BaseNode {

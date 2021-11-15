@@ -1842,7 +1842,6 @@ export default class StatementParser extends ExpressionParser {
     node.body.steps = [];
     this.expect(tt.braceL);
     while (!this.eat(tt.braceR)) {
-      console.log("parsing protocol step");
       this.expect(tt._protocolStep);
       node.body.steps.push(this.parseProtocolStep());
     }

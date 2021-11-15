@@ -3116,6 +3116,23 @@ export function isPipelinePrimaryTopicReference(
 
   return false;
 }
+export function isProtocolDeclaration(
+  node: object | null | undefined,
+  opts?: object | null,
+): node is t.ProtocolDeclaration {
+  if (!node) return false;
+
+  const nodeType = (node as t.Node).type;
+  if (nodeType === "ProtocolDeclaration") {
+    if (typeof opts === "undefined") {
+      return true;
+    } else {
+      return shallowEqual(node, opts);
+    }
+  }
+
+  return false;
+}
 export function isTSParameterProperty(
   node: object | null | undefined,
   opts?: object | null,
