@@ -55,8 +55,7 @@ package-lock.json
 /packages/babel-register/test/.babel
 /packages/babel-cli/test/tmp
 /packages/babel-node/test/tmp
-# for github build
-# /packages/*/lib
+/packages/*/lib
 .nyc_output
 /babel.sublime-workspace
 packages/babel-standalone/babel.js
