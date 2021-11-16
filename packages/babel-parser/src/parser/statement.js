@@ -1862,8 +1862,7 @@ export default class StatementParser extends ExpressionParser {
             if (this.eat(tt.bracketR)) break;
             this.expect(tt.thinArrow);
           }
-          const party = this.startNode();
-          party.id = this.parseIdentifier();
+          const party = this.parseIdentifier();
           node.parties.push(party);
         }
       }
